@@ -1,0 +1,17 @@
+{
+  "name": "tailwind-template",
+  "version": "1.0.0",
+  "scripts": {
+    "watch": "postcss src/tailwind.css -o public/global.css -w",
+    "build": "cross-env NODE_ENV=production postcss src/tailwind.css -o public/global.css && npm run js:minify",
+    "js:minify": "npx terser src/*.js -c -m toplevel -o public/app.js"
+  },
+  "devDependencies": {
+    "@fullhuman/postcss-purgecss": "^2.3.0",
+    "cross-env": "^7.0.2",
+    "cssnano": "^4.1.10",
+    "postcss-cli": "^7.1.1",
+    "tailwindcss": "^1.7.2",
+    "terser": "^5.2.0"
+  }
+}
