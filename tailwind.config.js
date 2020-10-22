@@ -1,15 +1,15 @@
 module.exports = {
     future: {
+        purgeLayersByDefault: true,
         removeDeprecatedGapUtilities: true,
     },
     purge: ['./**/*.html'],
     theme: {
         screens: {
-            xs: '360px',
-            sm: '640px',
+            sm: '600px',
             md: '768px',
             lg: '1024px',
-            xl: '1280px',
+            xl: '1440px',
         },
         container: {
             center: true,
