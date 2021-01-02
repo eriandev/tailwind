@@ -1,20 +1,11 @@
-const tailwindcss = require('tailwindcss')
-const cssnano = require('cssnano')({
-    preset: ['default', {
-        discardComments: {
-            removeAll: true,
-        },
-    }],
-})
-const purgecss = require('@fullhuman/postcss-purgecss')({
-    content: ['./**/*.html'],
-    defaultExtractor: content => content.match(/[A-Za-z0-9-_:/]+/g) || []
-})
+const mode = process.env.NODE_ENV
+const dev = mode === 'development'
+const config = { preset: ['default', { discardComments: { removeAll: true } }] }
 
 module.exports = {
-
-    plugins: [
-        tailwindcss('./tailwind.config.js'),
-        ...(process.env.NODE_ENV === 'production' ? [purgecss, cssnano] : []),
-    ]
+  plugins: {
+    tailwindcss: {},
+    ...(!dev ? { cssnano: config } : {}),
+    'postcss-preset-env': {},
+  },
 }
