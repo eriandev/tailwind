@@ -31,7 +31,7 @@ speed-measure-plugin*.json
 !.env.example
 /connect.lock
 /libpeerconnection.log
-/public/global.css
+/public/app.css
 /public/app.js
 npm-debug.log
 yarn-error.log
