@@ -3,13 +3,13 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "start": "serve public",
-    "dev": "run-p start css:watch",
-    "build": "run-s format css:build minify:js",
-    "format": "prettier --write ./**/*.{html,css,js}",
-    "minify:js": "terser src/*.js -c -m toplevel -o public/app.js",
-    "css:watch": "postcss src/app.css -o public/app.css -w",
-    "css:build": "cross-env NODE_ENV=production postcss src/app.css -o public/app.css"
+    "dev": "run-p preview css:watch",
+    "preview": "servor public --reload",
+    "build": "run-s format css:build js:build",
+    "format": "prettier --write src/**/*.{js,css}",
+    "js:build": "terser src/main.js -c -m toplevel -o public/app.js",
+    "css:watch": "postcss src/styles/main.css -o public/styles.css -w",
+    "css:build": "cross-env NODE_ENV=production postcss src/styles/main.css -o public/styles.css"
   },
   "devDependencies": {
     "cross-env": "7.0.3",
@@ -18,7 +18,8 @@
     "postcss-cli": "10.0.0",
     "postcss-preset-env": "7.7.2",
     "prettier": "2.7.1",
-    "serve": "14.0.1",
+    "prettier-plugin-tailwindcss": "0.1.13",
+    "servor": "4.0.2",
     "tailwindcss": "3.1.6",
     "terser": "5.14.2"
   }
